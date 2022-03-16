@@ -104,11 +104,10 @@ async function onCellClick(r, c){
    
     if(!currentBoard.gameOver()){
         //aiRandomMakeMove(currentBoard);
-        sleep(500).then(() => {
+        await sleep(500);
         aiMinMaxMakeMove(currentBoard, 8);
         updateBoardView(currentBoard);
         onPlayerMoveDone();  
-        });
     }
 }
 
@@ -180,7 +179,7 @@ function aiMinMaxMakeMoveForPlayer(board, player, maximizing, playerTurn, depth)
 {
     let opponent = playerTurn == 1? 2 : 1;
     if(depth == 0 || board.gameOver()){
-        let score = aiMinMaxBoardScore(board, player);
+        let score = aiMinMaxBoardScore(board, player, depth);
         //console.log(maximizing, player, score);
         //console.log(board.cells);
         return score;
@@ -209,11 +208,11 @@ function aiMinMaxMakeMoveForPlayer(board, player, maximizing, playerTurn, depth)
     return bestScore;
 }
 
-function aiMinMaxBoardScore(board, player){
+function aiMinMaxBoardScore(board, player, depth){
     let opponent = player == 1? 2 : 1;
     let playerScore = aiPlayerScore(board, player);
     let opponentScore = aiPlayerScore(board, opponent);
-    return playerScore - opponentScore;
+    return playerScore - opponentScore + depth;
 }
 
 function aiPlayerScore(board, player){
