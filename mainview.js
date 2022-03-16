@@ -93,7 +93,7 @@ function getWinnerName(cellValue) {
 var currentBoard = new Board();
 updateBoardView(currentBoard)
 
-function onCellClick(r, c){
+async function onCellClick(r, c){
     if(currentBoard.gameOver())
         return;
     if(!currentBoard.makeMove(r, c)){
@@ -104,9 +104,11 @@ function onCellClick(r, c){
    
     if(!currentBoard.gameOver()){
         //aiRandomMakeMove(currentBoard);
+        sleep(500).then(() => {
         aiMinMaxMakeMove(currentBoard, 8);
         updateBoardView(currentBoard);
         onPlayerMoveDone();  
+        });
     }
 }
 
@@ -286,4 +288,8 @@ function aiGetDiagonalScoreForPlayer(board, player){
         }
     }
     return cntMain * multMain + cntAlter * multAlter;
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
