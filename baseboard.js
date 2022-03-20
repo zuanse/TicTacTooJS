@@ -45,7 +45,7 @@ class BaseBoard{
             score += this.getRowScoreForPlayer(i, player);
             score += this.getColumnScoreForPlayer(i, player);
         }
-        return 0;
+        return score;
     }
 
     getDiagonalScoreForPlayer(player){

@@ -88,11 +88,11 @@ class EasyBoard extends BaseBoard{
             {
                 multMain = 0;
             }
-            if(this.cells[row][rc - row] == player)
+            if(this.cells[row][rc - 1 - row] == player)
             {
                 cntAlter++;
             }
-            else if (this.cells[row][rc - row] >0)
+            else if (this.cells[row][rc - 1 - row] >0)
             {
                 multAlter = 0;
             }

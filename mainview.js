@@ -47,6 +47,11 @@ function getWinnerName(cellValue) {
 var currentBoard = null;
 var robot = null;
 initNewGame();
+if(document.getElementById("idFirstMove").value == "robot")
+{
+    robot.makeMove(currentBoard);
+    updateBoardView(currentBoard);
+}
 
 async function onCellClick(r, c){
     if(currentBoard.gameOver())
@@ -98,7 +103,7 @@ function createRobot(){
     if(rob == "robotRandom")
         return new RobotRandom();
     else if(rob == "robotMiniMax")
-        return new RobotMiniMax(8);
+        return new RobotMiniMax(1);
 }
 
 function initNewGame(){
