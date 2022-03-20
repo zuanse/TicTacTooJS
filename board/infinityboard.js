@@ -1,7 +1,11 @@
 class InfinityBoard extends BaseBoard{
     constructor(){
         super();
-        this.cells = [[0,0,0],[0,0,0],[0,0,0]];
+        let dim = 30;
+        this.cells = new Array(dim);
+        for(var i =0; i < dim; i++){
+            this.cells[i] = new Array(dim).fill(0);
+        }
         this.marksInRow = 5;
     }
 

@@ -3,15 +3,23 @@
 //import {RobotMiniMax} from './robotminimax.js';
 
 function updateBoardView(board){
-    document.getElementById("00").src = getImageSrc(board.cells[0][0])
-    document.getElementById("01").src = getImageSrc(board.cells[0][1])
-    document.getElementById("02").src = getImageSrc(board.cells[0][2])
-    document.getElementById("10").src = getImageSrc(board.cells[1][0])
-    document.getElementById("11").src = getImageSrc(board.cells[1][1])
-    document.getElementById("12").src = getImageSrc(board.cells[1][2])
-    document.getElementById("20").src = getImageSrc(board.cells[2][0])
-    document.getElementById("21").src = getImageSrc(board.cells[2][1])
-    document.getElementById("22").src = getImageSrc(board.cells[2][2])
+    var table = document.getElementById("idBoardTable");
+    table.innerHTML = "";
+    let rc = board.rowsCount;
+    let cc = board.colsCount;
+    for(var r = 0; r < rc; r++){
+        var row = document.createElement('tr');
+        for(var c = 0; c < cc; c++){
+            cell = document.createElement('td');
+            img = document.createElement('img');
+            img.setAttribute('id', "" + r + c);
+            img.setAttribute('src', getImageSrc(board.cells[r][c]));
+            img.setAttribute('onclick',"onCellClick("+r+","+c+")")
+            cell.appendChild(img);
+            row.appendChild(cell);
+        }
+        table.appendChild(row);
+    }
 }
 
 function getImageSrc(cellValue) {
