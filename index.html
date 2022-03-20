@@ -1,61 +1,69 @@
 <!DOCTYPE HTML>
 <html>
+  <header>
+    <link rel="stylesheet" href="css/style.css"/>
+  </header>
 
 <body>
+  <h1 align="center">
+    Tic Tac Toe
+  </h1>
+  <div>
+    <div class="options">
+      <h3>Options</h3>
+      <label for="firstMove">Game starts:</label>
+      <select name="firstMove" id="idFirstMove">
+        <option value="human">Human</option>
+        <option value="robot">Robot</option>
+      </select>
 
-  <div style="text-align:center; margin-bottom: 20px">
-    <label for="firstMove">Game starts:</label>
-
-    <select name="firstMove" id="idFirstMove">
-      <option value="human">Human</option>
-      <option value="robot">Robot</option>
-    </select>
-    <button onclick="onNewGameClick()" >Start new game</button>
+      <button onclick="onNewGameClick()" margin="20,20,0,20">Start new game</button>
+    </div>
+    <div class="board">
+      <table cellspacing="2" border="1" cellpadding="0" width="192" height="192" align="center">
+        <tr>
+          <td >
+            <img id="00" onclick="onCellClick(0,0)"/>
+          </td>
+          <td>
+            <img id="01" onclick="onCellClick(0,1)"/>
+          </td>
+          <td>
+            <img id="02" onclick="onCellClick(0,2)"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img id="10" onclick="onCellClick(1,0)"/>
+          </td>
+          <td>
+            <img id="11" onclick="onCellClick(1,1)"/>
+          </td>
+          <td>
+            <img id="12" onclick="onCellClick(1,2)"/>
+          </td>
+        </tr> 
+      <tr>
+          <td>
+            <img id="20" onclick="onCellClick(2,0)"/>
+          </td>
+          <td>
+            <img id="21" onclick="onCellClick(2,1)"/>
+          </td>
+          <td>
+            <img id="22" onclick="onCellClick(2,2)"/>
+          </td>
+        </tr>
+      </table>  
+    </div>
+    <div class="winner">
+      <h3>Winner</h3>
+      <p class="winner-label" id="idWinnerCaption"></p>
+      <img id="idWinnerImage"/>
+    </div>
   </div>
-  
 
-  <table cellspacing="2" border="1" cellpadding="0" width="192" height="192" align="center">
-    <tr>
-      <td >
-        <img id="00" onclick="onCellClick(0,0)"/>
-      </td>
-      <td>
-        <img id="01" onclick="onCellClick(0,1)"/>
-      </td>
-      <td>
-        <img id="02" onclick="onCellClick(0,2)"/>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <img id="10" onclick="onCellClick(1,0)"/>
-      </td>
-      <td>
-        <img id="11" onclick="onCellClick(1,1)"/>
-      </td>
-      <td>
-        <img id="12" onclick="onCellClick(1,2)"/>
-      </td>
-    </tr> 
-   <tr>
-      <td>
-        <img id="20" onclick="onCellClick(2,0)"/>
-      </td>
-      <td>
-        <img id="21" onclick="onCellClick(2,1)"/>
-      </td>
-      <td>
-        <img id="22" onclick="onCellClick(2,2)"/>
-      </td>
-    </tr>
-  </table>
-
-  <div style="text-align:center; margin-bottom: 20px">
-    <p>Winner</p>
-    <p id="idWinnerCaption"></p>
-    <img id="idWinnerImage"/>
-  </div>
-
+ 
 </body>
 
 <script src="baseboard.js" ></script>
