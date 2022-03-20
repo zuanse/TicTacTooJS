@@ -11,11 +11,20 @@
   <div>
     <div class="options">
       <h3>Options</h3>
-      <label for="firstMove">Game starts:</label>
-      <select name="firstMove" id="idFirstMove">
-        <option value="human">Human</option>
-        <option value="robot">Robot</option>
-      </select>
+      <p>
+        <label for="firstMove">Game starts:</label>
+        <select name="firstMove" id="idFirstMove">
+          <option value="human">Human</option>
+          <option value="robot">Robot</option>
+        </select>
+      </p>
+      <p>
+        <label for="robotType">Robot type</label>
+        <select name="robotType" id="idRobotType">
+          <option value="robotRandom">Random moves</option>
+          <option value="robotMiniMax" selected="true">MiniMax</option>
+        </select>
+      </p>
 
       <button onclick="onNewGameClick()" margin="20,20,0,20">Start new game</button>
     </div>

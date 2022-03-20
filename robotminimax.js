@@ -2,10 +2,11 @@
 
 class RobotMiniMax extends BaseRobot{
     constructor(depth){
+        super();
         this.maxDepth = depth;
     }
     makeMove(board){
-        let moves = getPossibleMoves(board);
+        let moves = this.getPossibleMoves(board);
         if(moves.length == 0){
             return;
         }
@@ -16,7 +17,7 @@ class RobotMiniMax extends BaseRobot{
         for(var i = 0; i < moves.length; i++){
             let [row, col] = moves[i];
             board.cells[row][col] = player;
-            let score = makeMoveForPlayer(board, player, false, opponent, this.maxDepth-1);
+            let score = this.makeMoveForPlayer(board, player, false, opponent, this.maxDepth-1);
             board.cells[row][col] = 0;
             if(score > bestScore)
             {
@@ -42,16 +43,16 @@ class RobotMiniMax extends BaseRobot{
     {
         let opponent = board.opponent(playerTurn);
         if(depth == 0 || board.gameOver()){
-            let score = boardScore(board, player, depth);
+            let score = this.boardScore(board, player, depth);
             return score;
         }   
-        let moves = getPossibleMoves(board);
+        let moves = this.getPossibleMoves(board);
         if(maximizing){
             var bestScore = -200000;
             for(var i = 0; i < moves.length; i++){
                 let [row, col] = moves[i];
                 board.cells[row][col] = playerTurn;
-                let score = makeMoveForPlayer(board, player, ! maximizing, opponent, depth - 1);
+                let score = this.makeMoveForPlayer(board, player, ! maximizing, opponent, depth - 1);
                 board.cells[row][col] = 0;
                 bestScore = Math.max(bestScore, score);
             }        
@@ -61,7 +62,7 @@ class RobotMiniMax extends BaseRobot{
             for(var i = 0; i < moves.length; i++){
                 let [row, col] = moves[i];
                 board.cells[row][col] = playerTurn;
-                let score = makeMoveForPlayer(board, player, ! maximizing, opponent, depth - 1);
+                let score = this.makeMoveForPlayer(board, player, ! maximizing, opponent, depth - 1);
                 board.cells[row][col] = 0;
                 bestScore = Math.min(bestScore, score);
             }    
@@ -72,7 +73,7 @@ class RobotMiniMax extends BaseRobot{
     boardScore(board, player, depth){
         let opponent = board.opponent(player);
         let playerScore = board.playerScore(player);
-        let opponentScore = aiPlayerScore(board, opponent);
+        let opponentScore = board.playerScore(opponent);
         return playerScore - opponentScore + depth;
     }
 

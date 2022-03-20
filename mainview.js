@@ -94,7 +94,11 @@ function createBoard(){
 }
 
 function createRobot(){
-    return new RobotRandom();
+    let rob = document.getElementById("idRobotType").value;
+    if(rob == "robotRandom")
+        return new RobotRandom();
+    else if(rob == "robotMiniMax")
+        return new RobotMiniMax(8);
 }
 
 function initNewGame(){

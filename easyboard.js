@@ -46,11 +46,11 @@ class EasyBoard extends BaseBoard{
     getRowScoreForPlayer(row, player){
         var cnt = 0;
         for(var col =0; col < this.colsCount; col++){
-            if(board.cells[row][col] == player)
+            if(this.cells[row][col] == player)
             {
                 cnt++;
             }
-            else if (board.cells[row][col] >0)
+            else if (this.cells[row][col] >0)
             {
                 return 0;
             }
@@ -61,11 +61,11 @@ class EasyBoard extends BaseBoard{
     getColumnScoreForPlayer(col, player){
         var cnt = 0;
         for(var row =0; row < this.rowsCount; row++){
-            if(board.cells[row][col] == player)
+            if(this.cells[row][col] == player)
             {
                 cnt++;
             }
-            else if (board.cells[row][col] >0)
+            else if (this.cells[row][col] >0)
             {
                 return 0;
             }
