@@ -41,7 +41,8 @@ class BaseBoard{
             return -1000;
         }
         var score = this.getDiagonalScoreForPlayer(player);
-        for(var i = 0; i< this.rowsCount; i ++){
+        let rc = this.rowsCount;
+        for(var i = 0; i < rc; i ++){
             score += this.getRowScoreForPlayer(i, player);
             score += this.getColumnScoreForPlayer(i, player);
         }
