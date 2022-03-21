@@ -1,78 +1,50 @@
 <!DOCTYPE HTML>
 <html>
   <header>
-    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/sandbox.css"/>
   </header>
-
 <body>
-  <h1 align="center">
-    Tic Tac Toe
-  </h1>
-  <div>
-    <div class="options">
-      <h3>Options</h3>
-      <p>
-        <label for="firstMove">Game starts:</label>
-        <select name="firstMove" id="idFirstMove">
-          <option value="human" selected="true">Human</option>
-          <option value="robot">Robot</option>
-        </select>
-      </p>
-      <p>
-        <label for="robotType">Robot type:</label>
-        <select name="robotType" id="idRobotType">
-          <option value="robotRandom">Random moves</option>
-          <option value="robotMiniMax" selected="true">MiniMax</option>
-        </select>
-      </p>
-
-      <button onclick="onNewGameClick()" margin="20,20,0,20">Start new game</button>
+    <div class="maingrid">
+        <h1 id="caption">Tic Tac Toe</h1>
+        <div class="options">
+            <h3 align="center">Options</h3>
+            <p>
+              <label for="firstMove">Game starts:</label>
+              <select name="firstMove" id="idFirstMove">
+                <option value="human" selected="true">Human</option>
+                <option value="robot">Robot</option>
+              </select>
+            </p>
+            <p>
+              <label for="robotType">Robot type:</label>
+              <select name="robotType" id="idRobotType">
+                <option value="robotRandom">Random moves</option>
+                <option value="robotMiniMax" selected="true">MiniMax</option>
+              </select>
+            </p>
+            <p>
+              <label for="gameType">Game variant:</label>
+              <select name="gameType" id="idGameType">
+                <option value="easy" selected="true">Classic 3x3</option>
+                <option value="hard">5 in row</option>
+              </select>
+            </p>      
+            <button onclick="onNewGameClick()" margin="20,20,0,20">Start new game</button>
+        </div>
+        <div id="idBoard" class="board">
+            <div>
+                <img id="22" src="./crossIcon.jpg"/>
+            </div> 
+            <div>
+                <img id="22" src="./crossIcon.jpg"/>
+            </div> 
+        </div>
+        <div class="winner" id="idWinner">
+            <h3 align="center">Winner</h3>
+            <h1 class="winner-label" id="idWinnerCaption"></h1>
+            <img id="idWinnerImage"/>
+          </div>
     </div>
-    <div class="board">
-      <table cellspacing="2" border="1" cellpadding="0" width="192" height="192" align="center" id="idBoardTable">
-        <tr>
-          <td >
-            <img id="00" onclick="onCellClick(0,0)"/>
-          </td>
-          <td>
-            <img id="01" onclick="onCellClick(0,1)"/>
-          </td>
-          <td>
-            <img id="02" onclick="onCellClick(0,2)"/>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <img id="10" onclick="onCellClick(1,0)"/>
-          </td>
-          <td>
-            <img id="11" onclick="onCellClick(1,1)"/>
-          </td>
-          <td>
-            <img id="12" onclick="onCellClick(1,2)"/>
-          </td>
-        </tr> 
-      <tr>
-          <td>
-            <img id="20" onclick="onCellClick(2,0)"/>
-          </td>
-          <td>
-            <img id="21" onclick="onCellClick(2,1)"/>
-          </td>
-          <td>
-            <img id="22" onclick="onCellClick(2,2)"/>
-          </td>
-        </tr>
-      </table>  
-    </div>
-    <div class="winner">
-      <h3>Winner</h3>
-      <p class="winner-label" id="idWinnerCaption"></p>
-      <img id="idWinnerImage"/>
-    </div>
-  </div>
-
- 
 </body>
 
 <script src="./board/baseboard.js" ></script>

@@ -3,22 +3,23 @@
 //import {RobotMiniMax} from './robotminimax.js';
 
 function updateBoardView(board){
-    var table = document.getElementById("idBoardTable");
+    var table = document.getElementById("idBoard");
     table.innerHTML = "";
     let rc = board.rowsCount;
     let cc = board.colsCount;
+    let ss = getStyleSheet('board');
+    table.style.gridTemplateRows = "repeat(" + rc +", auto)";
+    table.style.gridTemplateColumns = "repeat(" + cc +", auto)";
     for(var r = 0; r < rc; r++){
-        var row = document.createElement('tr');
         for(var c = 0; c < cc; c++){
-            cell = document.createElement('td');
+            cell = document.createElement('div');
             img = document.createElement('img');
             img.setAttribute('id', "" + r + c);
             img.setAttribute('src', getImageSrc(board.cells[r][c]));
             img.setAttribute('onclick',"onCellClick("+r+","+c+")")
             cell.appendChild(img);
-            row.appendChild(cell);
+            table.appendChild(cell);
         }
-        table.appendChild(row);
     }
 }
 
@@ -101,9 +102,22 @@ function onNewGameClick(){
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+function getStyleSheet(unique_title) {
+    for (const sheet of document.styleSheets) {
+      if (sheet.title === unique_title) {
+        return sheet;
+      }
+    }
+  }
 
 function createBoard(){
-    return new EasyBoard();
+    let brd = document.getElementById("idGameType").value;
+    if(brd == "easy"){
+        return new EasyBoard();
+    }
+    else {
+        return new InfinityBoard();
+    }
 }
 
 function createRobot(){
