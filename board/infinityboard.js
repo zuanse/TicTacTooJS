@@ -58,7 +58,7 @@ class InfinityBoard extends BaseBoard{
             let r = Math.min(d, rc - 1);
             let c = Math.max(0, d -r);
             let v = this.cells[r][c];
-            let L = cc - c - 1;
+            let L = Math.min(cc - 1, d) - c;
             cnt = 0;
             for(var i = 0; i <= L; i++)
             {
@@ -81,7 +81,7 @@ class InfinityBoard extends BaseBoard{
             let r = Math.max(0, -d);
             let c = r + d;
             let v = this.cells[r][c];
-            let L = Math.min(rc - r, cc - c) - 1;
+            let L = Math.min(rc - 1 + d, cc - 1) - c;
             cnt = 0;
             for(var i = 0; i <= L; i++)
             {
@@ -107,17 +107,17 @@ class InfinityBoard extends BaseBoard{
     }
 
     getDiagonalScoreForPlayer(player){
-        let dStart = this.marksInRow -1;
-        let dEnd = cc + rc - this.marksInRow - 1;
         let cc = this.colsCount;
         let rc = this.rowsCount;
+        let dStart = this.marksInRow -1;
+        let dEnd = cc + rc - this.marksInRow - 1;
         let opp = this.opponent(player);
         let score = 0;
         for(var d = dStart; d <= dEnd; d++){
             let r = Math.min(d, rc - 1);
             let c = Math.max(0, d -r);
             let v = this.cells[r][c];
-            let L = cc - c - 1;
+            let L = Math.min(cc - 1, d) - c;
             let scoreBuilder = new LinePatternScoreBuilder(player, opp);
             for(var i = 0; i <= L; i++)
             {
@@ -131,7 +131,7 @@ class InfinityBoard extends BaseBoard{
             let r = Math.max(0, -d);
             let c = r + d;
             let v = this.cells[r][c];
-            let L = Math.min(rc - r, cc - c) - 1;
+            let L = Math.min(rc - 1 + d, cc - 1) - c;
             let scoreBuilder = new LinePatternScoreBuilder(player, opp);
             for(var i = 0; i <= L; i++)
             {
@@ -146,7 +146,7 @@ class InfinityBoard extends BaseBoard{
         let cc = this.colsCount;
         let opp = this.opponent(player);
         let scoreBuilder = new LinePatternScoreBuilder(player, opp);
-        for(var c = 0; c < cc; cc++){
+        for(var c = 0; c < cc; c++){
             scoreBuilder.putMark(this.cells[row][c]);
         }
         return scoreBuilder.score;
@@ -165,7 +165,7 @@ class InfinityBoard extends BaseBoard{
 }
 
 class LinePatternScoreBuilder {
-    constructor(player, opponent){
+    constructor(player, opponent, marksInRow){
         this.prev = 1;
         this.player = player;
         this.opponent = opponent;
@@ -173,6 +173,7 @@ class LinePatternScoreBuilder {
         this.score = 0;
         this.bounds = 0;
         this.length = 0;
+        this.marksInRow = marksInRow;
     }
 
     putMark(mark){
@@ -192,8 +193,8 @@ class LinePatternScoreBuilder {
                 this.prev = 0;
             }
             else{
-                this.score += getPatternScore();
-                setNewPatt(0);
+                this.score += this.getPatternScore();
+                this.setNewPatt(0);
              }
         }
         else {
@@ -203,7 +204,7 @@ class LinePatternScoreBuilder {
             else {
                 this.bounds++;
                 this.score += this.getPatternScore();
-                setNewPatt(1);
+                this.setNewPatt(1);
             }
         }
     }
@@ -216,12 +217,13 @@ class LinePatternScoreBuilder {
     }
     
     getPatternScore(){
+        if(this.length == this.marksInRow)
+            return 1000;
         if(this.bounds = 0){
             return 0;
         }
-        else{
-            return 2 * (this.length - 1) + this.bounds;
-        }
+        return 2 * (this.length - 1) + this.bounds;
+
     }
 
 }

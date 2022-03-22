@@ -125,7 +125,7 @@ function createRobot(){
     if(rob == "robotRandom")
         return new RobotRandom();
     else if(rob == "robotMiniMax")
-        return new RobotMiniMax(8);
+        return new RobotMiniMax(9);
 }
 
 function initNewGame(){
