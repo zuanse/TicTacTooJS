@@ -18,7 +18,7 @@ class InfinityBoard extends BaseBoard{
         {
             let v = this.cells[r][0];
             cnt = 0;
-            for(var c = 0; c < cc; cc++){
+            for(var c = 0; c < cc; c++){
                 if((this.cells[r][c] == v)&&(v > 0)){
                     cnt++;
                     if(cnt == this.marksInRow){
@@ -55,8 +55,8 @@ class InfinityBoard extends BaseBoard{
         let dStart = this.marksInRow -1;
         let dEnd = cc + rc - this.marksInRow - 1;
         for(var d = dStart; d <= dEnd; d++){
-            let r = Math.Min(d, rc - 1);
-            let c = Math.Max(0, d -r);
+            let r = Math.min(d, rc - 1);
+            let c = Math.max(0, d -r);
             let v = this.cells[r][c];
             let L = cc - c - 1;
             cnt = 0;
@@ -78,10 +78,10 @@ class InfinityBoard extends BaseBoard{
         dStart = this.marksInRow - rc;
         dEnd = cc - this.marksInRow;
         for(var d = dStart; d <= dEnd; d++){
-            let r = Math.Max(0, -d);
+            let r = Math.max(0, -d);
             let c = r + d;
             let v = this.cells[r][c];
-            let L = Math.Min(rc - r, cc - c) - 1;
+            let L = Math.min(rc - r, cc - c) - 1;
             cnt = 0;
             for(var i = 0; i <= L; i++)
             {
@@ -114,8 +114,8 @@ class InfinityBoard extends BaseBoard{
         let opp = this.opponent(player);
         let score = 0;
         for(var d = dStart; d <= dEnd; d++){
-            let r = Math.Min(d, rc - 1);
-            let c = Math.Max(0, d -r);
+            let r = Math.min(d, rc - 1);
+            let c = Math.max(0, d -r);
             let v = this.cells[r][c];
             let L = cc - c - 1;
             let scoreBuilder = new LinePatternScoreBuilder(player, opp);
@@ -128,10 +128,10 @@ class InfinityBoard extends BaseBoard{
         dStart = this.marksInRow - rc;
         dEnd = cc - this.marksInRow;
         for(var d = dStart; d <= dEnd; d++){
-            let r = Math.Max(0, -d);
+            let r = Math.max(0, -d);
             let c = r + d;
             let v = this.cells[r][c];
-            let L = Math.Min(rc - r, cc - c) - 1;
+            let L = Math.min(rc - r, cc - c) - 1;
             let scoreBuilder = new LinePatternScoreBuilder(player, opp);
             for(var i = 0; i <= L; i++)
             {
