@@ -75,7 +75,16 @@ class RobotMiniMax extends BaseRobot{
     makeMoveForPlayer(board, player, maximizing, playerTurn, depth, moves)
     {
         let opponent = board.opponent(playerTurn);
-        if(depth == 0 || board.gameOver()){
+        let winner = board.getWinner();
+        if(winner > 0)
+        {
+            if(winner == player)
+                return 2000 + depth;
+            else
+                return -2000 + depth;
+        
+        }
+        if(depth == 0){
             let score = this.boardScore(board, player, depth);
             return score;
         }   

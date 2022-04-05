@@ -11,15 +11,16 @@
             <p>
               <label for="firstMove">Game starts:</label>
               <select name="firstMove" id="idFirstMove">
-                <option value="human" selected="true">Human</option>
-                <option value="robot">Robot</option>
+                <option value="human">Human</option>
+                <option value="robot" selected="true">Robot</option>
               </select>
             </p>
             <p>
               <label for="robotType">Robot type:</label>
               <select name="robotType" id="idRobotType">
                 <option value="robotRandom">Random moves</option>
-                <option value="robotMiniMax" selected="true">MiniMax</option>
+                <option value="robotMiniMax">MiniMax</option>
+                <option value="robotAlphaBeta" selected="true">AlphaBeta</option>
               </select>
             </p>
             <p>
@@ -53,6 +54,7 @@
 <script src="./board/infinityboard.js"></script>
 <script src="./robot/robotrandom.js" ></script>
 <script src="./robot/robotminimax.js" ></script>
+<script src="./robot/robotalphabeta.js" ></script>
 <script src="mainview.js" ></script>
 
 </html>

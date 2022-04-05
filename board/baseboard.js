@@ -32,14 +32,14 @@ class BaseBoard{
 
     playerScore(player)
     {
-        let winner = this.getWinner();
-        if(winner == player){
-            return 1000;
-        }
-        let opponent = this.opponent(player);
-        if(winner == opponent){
-            return -1000;
-        }
+        // let winner = this.getWinner();
+        // if(winner == player){
+        //     return 1000;
+        // }
+        // let opponent = this.opponent(player);
+        // if(winner == opponent){
+        //     return -1000;
+        // }
         var score = this.getDiagonalScoreForPlayer(player);
         let rc = this.rowsCount;
         for(var i = 0; i < rc; i ++){

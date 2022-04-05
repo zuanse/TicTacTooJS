@@ -29,6 +29,9 @@ class InfinityBoard extends BaseBoard{
                 {
                     v = this.cells[r][c];
                     cnt == 0;
+                    if(v > 0){
+                        cnt += 1;
+                    }
                 }
             }
         }
@@ -48,6 +51,9 @@ class InfinityBoard extends BaseBoard{
                 {
                     v = this.cells[r][c];
                     cnt == 0;
+                    if(v > 0){
+                        cnt += 1;
+                    }
                 }
             }
         }
@@ -72,6 +78,9 @@ class InfinityBoard extends BaseBoard{
                 {
                     v = this.cells[r-i][c+i];
                     cnt == 0;
+                    if(v > 0){
+                        cnt += 1;
+                    }
                 }
             }
         }
@@ -95,6 +104,9 @@ class InfinityBoard extends BaseBoard{
                 {
                     v = this.cells[r+i][c+i];
                     cnt == 0;
+                    if(v > 0){
+                        cnt += 1;
+                    }
                 }
             }
         }
